@@ -4,7 +4,8 @@ var rleDecompress = function(rle) {
  var num = '';
  var x = 0;
  var y = 0;
- 
+ var l; 
+
  for(var s in rle) {
 
   var s = rle[s];
