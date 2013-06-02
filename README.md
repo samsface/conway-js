@@ -1,4 +1,4 @@
-Conway.js
+Conway-js
 =========
 A Javascript Conways Game of Life With 1000 Patterns
 ##About
