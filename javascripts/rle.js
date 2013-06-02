@@ -53,3 +53,31 @@ var rleDecompress = function(rle) {
  return piece;
 
 };
+
+var getPattern = function(id) {
+ 
+ $.get('patterns/'+id+'.rle', 
+  
+  function(data) { 
+
+    var rle = data; 
+    rle = rle.substr(rle.indexOf('\n', rle.indexOf('rule')+1)).replace('\n', ''); 
+    pattern[id] = rle.replace('\r', ''); 
+    selectPattern(id);
+    console.log(id);
+
+   }
+
+ );
+
+ 
+
+};
+
+var lol;
+$('#patterns li').click(function() { selectPattern($(this).text()); });
+
+var pattern = {}
+
+pattern.Cell = 'o!';
+

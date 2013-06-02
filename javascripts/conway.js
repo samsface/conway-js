@@ -1,8 +1,12 @@
+// Grid of cells
 var cells = {};
+// Potential Cells
 var egg = {};
+// Dead cells
 var deadcells = {};
 var graveyard = {};
 var map = [[-1,-1], [-1,0], [-1,1], [0,-1], [0,1], [1,-1], [1,0], [1,1]];
+var reset = 0;
 
 var getCellCoords = function(cellId) {
 
@@ -86,6 +90,14 @@ var run = function() {
   for(var x in egg[y])
    cells[y][x] = 1;
   
+ }
+
+ if(reset) {
+
+  cells = {};
+  drawnCells = {}; 
+  reset = 0;
+
  }
 
  graveyard = {};

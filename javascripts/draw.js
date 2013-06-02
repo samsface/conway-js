@@ -7,7 +7,7 @@ var fr = 40;
 var pageX = 0;
 var pageY = 0;
 var stop = false;
-var scl = 10;
+var scl = 5;
 
 var par = [0, 0, 0, 0];
 
@@ -25,11 +25,11 @@ can.onmousedown = function(evt) {
 
 can.onmousemove = function(evt) {
 
- if(Math.floor(evt.pageX/scl)*scl !== pageX)
-  pageX = Math.floor(evt.pageX/scl)*scl;
+ if(Math.floor((evt.pageX-this.offsetLeft)/scl)*scl !== pageX)
+  pageX = Math.floor((evt.pageX-this.offsetLeft)/scl)*scl;
 
- if(Math.floor(evt.pageY/scl)*scl !== pageY)
-  pageY = Math.floor(evt.pageY/scl)*scl;
+ if(Math.floor((evt.pageY-this.offsetTop)/scl)*scl !== pageY)
+  pageY = Math.floor((evt.pageY-this.offsetTop)/scl)*scl;
 
 };
 
@@ -150,6 +150,10 @@ var selectPattern = function(id) {
 };
 
 
-$('#scale').keyup(function() { scl = parseInt($(this).val()); });
-$('#tempo').keyup(function() { fr = parseInt($(this).val()); clearInterval(tim); start(); });
+$('#scale').change(function() { scl = parseInt($(this).val()); });
+$('#tempo').change(function() { fr = parseInt($(this).val()); clearInterval(tim); start(); });
 $('#pause').click(function() { stop = !stop; });
+$('#clear').click(function() { reset = 1; });
+$('#single').click(function() { selectPattern('Cell'); });
+$('#attack_input').click(function() { (attack = parseInt($(this).val())/10.0); });
+$('#decay_input').click(function() { (decay = parseInt($(this).val())/10.0); });
